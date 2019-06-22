@@ -5,6 +5,18 @@ const url = "mongodb://localhost:27017/";
 var service2 = new cote.Responder({
     name: 'service2'
 });
+var client2 = new cote.Requester({
+    name: 'client2'
+  });
+
+  async function sendRequest(){
+    console.log('sending to service1...');
+    await client1.send({
+        type: 'messagefrom2'
+    }, function(res) {
+        console.log('reseived', res);
+    });
+};
 
 const connectAndRead = async (insertInfo) => {
     const client = await MongoClient.connect(url, { useNewUrlParser: true });

@@ -28,17 +28,18 @@ const connectAndWrite = async (doki) => {
   const collection = db.collection(`documents`);
 
   await collection.insertMany(doki, function(err, results){
-    var str="";
-    for (var i=0;i<results.insertedCount;i++){
-       str+=results.insertedIds[i];
-       if (i<results.insertedCount-1) 
+    console.log(results);
+    client.close();
+  });
+
+  var str="";
+    for (var i=0;i<doki.insertedCount;i++){
+       str+=doki.insertedIds[i];
+       if (i<doki.insertedCount-1) 
           str+=",";
     }
     request_to2.insertedIds=str;
-    console.log(results);
     sendRequest();
-    client.close();
-});
 };
 
 service1.on('datato1', async function(req, cb) {
