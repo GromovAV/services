@@ -11,12 +11,13 @@ const connectAndRead = async (insertInfo) => {
     const db = client.db(`documdb`);
     const collection = db.collection(`documents`);
 
-    await collection.find().toArray(function(err, results){            
+    await collection.find().toArray(function(err, results){    
+        console.log('\nService2: data obtained from Client.');        
         console.log(results);
         client.close();
     });
 
-    collection.deleteMany(insertInfo, function(err, results){
+    await collection.deleteMany(insertInfo, function(err, results){
     });
   };
 
