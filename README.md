@@ -23,3 +23,8 @@ Client(создан для тестирования взаимодействия
     https://stackoverflow.com
     https://habr.com
     огромное количество разнообразных статей и видео(https://www.youtube.com/) по микросервисам, node js, mongodb и множеству других тем
+
+Для запуска необходимо перейти в папку с проектом, при установленном node js, mongodb, достаточно в разных командных строках вызвать :
+node service1,
+node service2,
+node client
