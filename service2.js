@@ -9,12 +9,12 @@ var client2 = new cote.Requester({
     name: 'client2'
 });
 
-function sendRequest(){
-    console.log('sending to service1...');
-    client2.send({
+async function sendRequest(){
+    console.log('Service2:the data obtained from Service1');
+    await client2.send({
         type: 'messagefrom2'
     }, function(res) {
-        console.log('reseived', res);
+        console.log('', res);
     });
 };
 
@@ -35,10 +35,11 @@ const connectAndRead = async (insertInfo) => {
     client.close();
   };
 
-service2.on('messageto2', function(req, cb) {
+service2.on('messageto2',async function(req, cb) {
     var insertInfo=req.doki;
 
     connectAndRead(insertInfo).catch((e) => {
         throw e;
       });
+    cb('Service2:the data obtained!');
 })

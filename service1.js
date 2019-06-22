@@ -14,12 +14,12 @@ const request_to2 = {
 }
 
 async function sendRequest(){
+  console.log('\nsending data to service2...');
     await client1.send(
       request_to2
     , function(res) {
         console.log('reseived', res);
     });
-    console.log('\nsending data to service2...');
 };
 
 const connectAndWrite = async (doki) => {
@@ -35,8 +35,8 @@ const connectAndWrite = async (doki) => {
           str+=",";
     }
     request_to2.insertedIds=str;
-    sendRequest();
     console.log(results);
+    sendRequest();
 });
   client.close();
 };
@@ -47,6 +47,6 @@ service1.on('datato1', async function(req, cb) {
   connectAndWrite(doki).catch((e) => {
     throw e;
   });
-     console.log('\nService1:reseive data. replying with ok');
-    cb('ok!');
+     console.log('\nService1:reseive data from Client. replying with ok');
+    cb('ok! Service1 reseive data from Client');
 })
