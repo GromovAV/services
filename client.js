@@ -4,13 +4,11 @@ var client = new cote.Requester({
     name: 'client'
 });
 
-async function sendRequest(){
-    var request = {
-        type: 'datato1',
-        numbDocs:1,
-        doki:""
-    };
-
+const request = {
+    type: 'datato1',
+    doki:""
+};
+const sendRequest = async function sendRequest(){
       request.doki=[{name: Math.random().toString(10).substring(2,10)}, {name: Math.random().toString(10).substring(2,10)},
          {name: Math.random().toString(10).substring(2,10)} ];
 
