@@ -1,9 +1,11 @@
 var cote = require('cote');
 const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017/";
+var ObjectId = require('mongodb').ObjectID;
 
 var service2 = new cote.Responder({
-    name: 'service2'
+    name: 'service2',
+    key: 'key2'
 });
 var client2 = new cote.Requester({
     name: 'client2'
@@ -18,7 +20,7 @@ var client2 = new cote.Requester({
     });
 };
 
-const connectAndRead = async (insertInfo) => {
+const connectAndRead = async (myquery) => {
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(`documdb`);
     const collection = db.collection(`documents`);
@@ -29,15 +31,24 @@ const connectAndRead = async (insertInfo) => {
         client.close();
     });
 
-    await collection.deleteMany(insertInfo, function(err, results){
-    });
+    await collection.deleteMany( myquery, function(err, obj) {
+        client.close();
+        if (err) throw err;
+      });
+    client.close();
   };
 
-service2.on('messageto2',async function(req, cb) {
-    var insertInfo=req.doki;
-
-    connectAndRead(insertInfo).catch((e) => {
-        throw e;
-      });
-    cb('Service2:the data obtained!');
-})
+service2.on('messageto2', function(req, cb) {
+    var  ids=[]; 
+    ids = req.insertedIds.split(",");
+    var ods=[];
+  
+    for (var i=0;i<3;i++)
+        ods.push(ObjectId(ids[i]));
+    
+    var myquery = { _id: { $in: ods} };
+    connectAndRead(myquery).catch((e) => {
+          throw e;
+    });
+    cb('ok from service2!');
+  })

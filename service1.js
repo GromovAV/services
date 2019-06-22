@@ -3,10 +3,12 @@ const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017/";
  
 var service1 = new cote.Responder({
-    name: 'service1'
+    name: 'service1',
+    key: 'key1'
 });
 var client1 = new cote.Requester({
-    name: 'client1'
+    name: 'client1',
+    key: 'key2'
 });
 const request_to2 = {
     type: 'messageto2',
@@ -14,11 +16,10 @@ const request_to2 = {
 }
 
 async function sendRequest(){
-  console.log('\nsending data to service2...');
     await client1.send(
       request_to2
     , function(res) {
-        console.log('reseived', res);
+        console.log('', res);
     });
 };
 
@@ -28,18 +29,18 @@ const connectAndWrite = async (doki) => {
   const collection = db.collection(`documents`);
 
   await collection.insertMany(doki, function(err, results){
-    console.log(results);
-    client.close();
-  });
-
-  var str="";
-    for (var i=0;i<doki.insertedCount;i++){
-       str+=doki.insertedIds[i];
-       if (i<doki.insertedCount-1) 
+    var str="";
+    for (var i=0;i<results.insertedCount;i++){
+       str+=results.insertedIds[i];
+       if (i<results.insertedCount-1) 
           str+=",";
     }
     request_to2.insertedIds=str;
+    console.log('sending data to service2...');
     sendRequest();
+    console.log(results);
+    client.close();
+  });
 };
 
 service1.on('datato1', async function(req, cb) {
