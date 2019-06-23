@@ -11,9 +11,9 @@ var client2 = new cote.Requester({
     name: 'client2'
   });
 
-  async function sendRequest(){
+  function sendRequest(){
     console.log('sending to service1...');
-    await client1.send({
+    client1.send({
         type: 'messagefrom2'
       }, function(res) {
           console.log('reseived', res);

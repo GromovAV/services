@@ -10,12 +10,12 @@ const request = {
     doki:""
 };
 
-const sendRequest = async function sendRequest(){
+const sendRequest = function sendRequest(){
     request.doki=[{name: Math.random().toString(10).substring(2,10)}, {name: Math.random().toString(10).substring(2,10)},
          {name: Math.random().toString(10).substring(2,10)} ];
       
     console.log('sending data to services...');
-    await client.send(
+    client.send(
         request
         , function(res) {
             console.log('reseived', res);

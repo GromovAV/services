@@ -15,8 +15,8 @@ const request_to2 = {
     insertedIds: String
 }
 
-async function sendRequest(){
-    await client1.send(
+function sendRequest(){
+    client1.send(
       request_to2
       , function(res) {
         console.log('', res);
