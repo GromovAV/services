@@ -15,8 +15,8 @@ var client2 = new cote.Requester({
     console.log('sending to service1...');
     await client1.send({
         type: 'messagefrom2'
-    }, function(res) {
-        console.log('reseived', res);
+      }, function(res) {
+          console.log('reseived', res);
     });
 };
 
@@ -25,16 +25,11 @@ const connectAndRead = async (myquery) => {
     const db = client.db(`documdb`);
     const collection = db.collection(`documents`);
 
-    await collection.find().toArray(function(err, results){    
-        console.log('\nService2: data obtained from Client.');        
-        console.log(results);
-        client.close();
-    });
+    const results = await collection.find().toArray();
+    console.log('\nService2: data obtained from Client.');        
+    console.log(results);
 
-    await collection.deleteMany( myquery, function(err, obj) {
-        client.close();
-        if (err) throw err;
-      });
+    await collection.deleteMany(myquery);
     client.close();
   };
 

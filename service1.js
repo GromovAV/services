@@ -18,7 +18,7 @@ const request_to2 = {
 async function sendRequest(){
     await client1.send(
       request_to2
-    , function(res) {
+      , function(res) {
         console.log('', res);
     });
 };
@@ -28,27 +28,26 @@ const connectAndWrite = async (doki) => {
   const db = client.db(`documdb`);
   const collection = db.collection(`documents`);
 
-  await collection.insertMany(doki, function(err, results){
-    var str="";
+  const results = await collection.insertMany(doki);
+  var str="";
     for (var i=0;i<results.insertedCount;i++){
        str+=results.insertedIds[i];
-       if (i<results.insertedCount-1) 
-          str+=",";
+      if (i<results.insertedCount-1) 
+        str+=",";
     }
     request_to2.insertedIds=str;
     console.log('sending data to service2...');
     sendRequest();
     console.log(results);
     client.close();
-  });
 };
 
-service1.on('datato1', async function(req, cb) {
+service1.on('datato1', function(req, cb) {
   var doki=req.doki;
   
   connectAndWrite(doki).catch((e) => {
     throw e;
   });
-     console.log('\nService1:reseive data from Client. replying with ok');
-    cb('ok! Service1 reseive data from Client');
+  console.log('\nService1:reseive data from Client. replying with ok');
+  cb('ok! Service1 reseive data from Client');
 })
