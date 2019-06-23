@@ -26,7 +26,7 @@ const connectAndRead = async (myquery) => {
     const collection = db.collection(`documents`);
 
     const results = await collection.find().toArray();
-    console.log('\nService2: data obtained from Client.');        
+    console.log('\nService2: data obtained from Service1.');        
     console.log(results);
 
     await collection.deleteMany(myquery);
