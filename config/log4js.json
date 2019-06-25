@@ -1,0 +1,11 @@
+{
+    "appenders": {
+      "log": {
+        "type": "file",
+        "filename": "log/clientservices.log"
+      }
+    },
+    "categories": {
+      "default": { "appenders": [ "log"], "level": "INFO" }
+    }
+  }

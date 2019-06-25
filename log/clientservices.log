@@ -1,0 +1,21 @@
+[2019-06-25T19:11:34.233] [INFO] default - I'm sending data to Service1
+[2019-06-25T19:11:34.236] [INFO] default - I accepted the data from Client
+[2019-06-25T19:11:35.296] [INFO] default - I'm reseived data from Client
+[2019-06-25T19:11:35.301] [INFO] default - I'm reseived data from Client
+[2019-06-25T19:11:35.314] [INFO] default - I'm sending data to Service2
+[2019-06-25T19:11:36.237] [INFO] default - I accepted the data from Client
+[2019-06-25T19:11:36.237] [INFO] default - I'm sending data to Service1
+[2019-06-25T19:11:36.339] [INFO] default - I found the data in the database.
+[2019-06-25T19:11:36.344] [INFO] default - I deleted data from the database
+[2019-06-25T19:11:37.257] [INFO] default - I'm reseived data from Client
+[2019-06-25T19:11:37.259] [INFO] default - I'm reseived data from Client
+[2019-06-25T19:11:37.262] [INFO] default - I'm sending data to Service2
+[2019-06-25T19:11:38.239] [INFO] default - I accepted the data from Client
+[2019-06-25T19:11:38.239] [INFO] default - I'm sending data to Service1
+[2019-06-25T19:11:38.271] [INFO] default - I found the data in the database.
+[2019-06-25T19:11:38.276] [INFO] default - I deleted data from the database
+[2019-06-25T19:11:39.256] [INFO] default - I'm reseived data from Client
+[2019-06-25T19:11:39.258] [INFO] default - I'm reseived data from Client
+[2019-06-25T19:11:39.260] [INFO] default - I'm sending data to Service2
+[2019-06-25T19:11:40.277] [INFO] default - I found the data in the database.
+[2019-06-25T19:11:40.281] [INFO] default - I deleted data from the database

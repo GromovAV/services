@@ -1,0 +1,17 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "main": "client.js",
+  "dependencies": {
+    "cote": "^0.20.0",
+    "log4js": "^4.3.2",
+    "mongodb": "^3.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gromov Anton",
+  "license": "ISC",
+  "description": "NodeJS and MongoDB"
+}
