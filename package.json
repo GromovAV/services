@@ -4,7 +4,7 @@
   "main": "client.js",
   "dependencies": {
     "cote": "^0.20.0",
-    "log4js": "^4.3.2",
+    "log4js": "^6.4.0",
     "mongodb": "^3.2.7"
   },
   "devDependencies": {},
